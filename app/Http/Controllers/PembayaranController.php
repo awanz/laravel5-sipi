@@ -1,0 +1,59 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+// call model Purchase Order
+use App\Pembayaran;
+
+class PembayaranController extends Controller
+{
+    public function index()
+    {
+        $Pembayaran = Pembayaran::all();
+    	return view('pembayaran/index', ['pembayaran' => $Pembayaran]);
+    }
+
+    public function hapus($pembayaran_id)
+	{
+	    $pembayaran = Pembayaran::find($pembayaran_id);
+	    $pembayaran->delete();
+	    return redirect('/pembayaran');
+    }
+    
+    public function tambah()
+    {
+    	return view('pembayaran/tambah');
+    }
+
+    public function tambah_proses(Request $request)
+    {
+        $tanggal = $request->tgl_pembayaran;
+        $tanggal = date("Y-m-d", strtotime($tanggal));
+        Pembayaran::create([
+    		'purchase_order_id' => $request->purchase_order_id,
+			'jumlah_pembayaran' => $request->jumlah_pembayaran,
+			'tgl_pembayaran' => $tanggal
+    	]);
+ 
+    	return redirect('/pembayaran');
+    }
+
+    public function edit($id)
+	{
+	   $pembayaran = Pembayaran::find($id);
+	   return view('/pembayaran/edit', ['pembayaran' => $pembayaran]);
+	}
+
+	public function edit_proses($id, Request $request)
+	{
+		$tanggal = $request->tgl_pembayaran;
+        $tanggal = date("Y-m-d", strtotime($tanggal));
+		$pembayaran = Pembayaran::find($id);
+		$pembayaran->purchase_order_id = $request->purchase_order_id;
+		$pembayaran->jumlah_pembayaran = $request->jumlah_pembayaran;
+		$pembayaran->tgl_pembayaran = $tanggal;
+		$pembayaran->save();
+		return redirect('/pembayaran');
+	}
+}
