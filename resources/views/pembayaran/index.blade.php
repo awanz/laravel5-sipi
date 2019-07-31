@@ -16,7 +16,7 @@
       <tbody>
       @foreach($pembayaran as $p)
       <tr>
-        <td>1</td>
+        <td>{{ $p->id_purchase_order }}</td>
         <td>{{ $p->jumlah_pembayaran }}</td>
         <td>{{ $p->tgl_pembayaran }}</td>
         <td>

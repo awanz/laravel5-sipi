@@ -7,6 +7,14 @@
     </div>
     <!-- /.box-header -->
     <div class="box-body">
+        @php
+            $po = []
+        @endphp
+        @foreach ($PurchaseOrder as $item)
+            @php
+                $po[$item->id_purchase_order] = $item->no_purchase_order;
+            @endphp
+        @endforeach
         <form action="/pembayaran/edit_proses/{{ $pembayaran->pembayaran_id }}" method="post">
             {{ csrf_field() }}
             {{ method_field('PUT') }}
@@ -15,7 +23,7 @@
                 {{ 
                     Form::select(
                         'id_purchase_order', 
-                        $pembayaran, 
+                        $po, 
                         $pembayaran->id_purchase_order, 
                         array(
                             'class' => 'form-control select2'

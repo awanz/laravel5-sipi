@@ -44,8 +44,9 @@ class PembayaranController extends Controller
 
     public function edit($id)
 	{
-	   $pembayaran = Pembayaran::find($id);
-	   return view('/pembayaran/edit', ['pembayaran' => $pembayaran]);
+	   $pembayaran 		= Pembayaran::find($id);
+	   $PurchaseOrder 	= PurchaseOrder::all();
+	   return view('/pembayaran/edit', ['pembayaran' => $pembayaran, 'PurchaseOrder' => $PurchaseOrder]);
 	}
 
 	public function edit_proses($id, Request $request)
@@ -53,7 +54,7 @@ class PembayaranController extends Controller
 		$tanggal = $request->tgl_pembayaran;
         $tanggal = date("Y-m-d", strtotime($tanggal));
 		$pembayaran = Pembayaran::find($id);
-		$pembayaran->purchase_order_id = $request->purchase_order_id;
+		$pembayaran->id_purchase_order = $request->id_purchase_order;
 		$pembayaran->jumlah_pembayaran = $request->jumlah_pembayaran;
 		$pembayaran->tgl_pembayaran = $tanggal;
 		$pembayaran->save();
