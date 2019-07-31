@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// call model Purchase Order
+// call model Pembayaran
 use App\Pembayaran;
+// call model Purchase Order
+use App\PurchaseOrder;
 
 class PembayaranController extends Controller
 {
@@ -23,7 +25,8 @@ class PembayaranController extends Controller
     
     public function tambah()
     {
-    	return view('pembayaran/tambah');
+		$PurchaseOrder = PurchaseOrder::all();
+    	return view('pembayaran/tambah', ['PurchaseOrder' => $PurchaseOrder]);
     }
 
     public function tambah_proses(Request $request)
@@ -31,7 +34,7 @@ class PembayaranController extends Controller
         $tanggal = $request->tgl_pembayaran;
         $tanggal = date("Y-m-d", strtotime($tanggal));
         Pembayaran::create([
-    		'purchase_order_id' => $request->purchase_order_id,
+    		'id_purchase_order' => $request->id_purchase_order,
 			'jumlah_pembayaran' => $request->jumlah_pembayaran,
 			'tgl_pembayaran' => $tanggal
     	]);

@@ -7,7 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Pembayaran extends Model
 {
     protected $table = "pembayaran";
-    protected $fillable = ['pembayaran_id','purchase_order_id','jumlah_pembayaran','tgl_pembayaran'];
+    protected $fillable = ['pembayaran_id','id_purchase_order','jumlah_pembayaran','tgl_pembayaran'];
     protected $primaryKey = 'pembayaran_id';
     public $timestamps = false;
+
+    public function purchaseOrder(){
+    	return $this->belongsTo('App\PurchaseOrder');
+    }
 }

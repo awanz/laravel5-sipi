@@ -8,6 +8,8 @@
       <thead>
       <tr>
         <th>No Purchase Order</th>
+        <th>No Invoice</th>
+        <th>Tgl Invoice</th>
         <th>Nama Project</th>
         <th>Customer</th>
         <th>Nominal Purchase Order</th>
@@ -19,6 +21,8 @@
       @foreach($PurchaseOrder as $po)
       <tr>
         <td>{{ $po->no_purchase_order }}</td>
+        <td>{{ $po->no_invoice }}</td>
+        <td>{{ $po->tgl_invoice }}</td>
         <td>{{ $po->nama_project }}</td>
         <td>{{ $po->customer }}</td>
         <td>{{ $po->nominal_purchase_order }}</td>
@@ -40,6 +44,8 @@
       <tfoot>
       <tr>
         <th>No Purchase Order</th>
+        <th>No Invoice</th>
+        <th>Tgl Invoice</th>
         <th>Nama Project</th>
         <th>Customer</th>
         <th>Nominal Purchase Order</th>

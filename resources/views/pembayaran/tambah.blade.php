@@ -7,6 +7,14 @@
     </div>
     <!-- /.box-header -->
     <div class="box-body">
+        @php
+            $pembayaran = []
+        @endphp
+        @foreach ($PurchaseOrder as $item)
+            @php
+                $pembayaran[$item->id_purchase_order] = $item->no_purchase_order;
+            @endphp
+        @endforeach
         <form action="/pembayaran/tambah_proses" method="post">
             {{ csrf_field() }}
 
@@ -14,12 +22,8 @@
                 <label>No Invoice</label>
                 {{ 
                     Form::select(
-                        'purchase_order_id', 
-                        array(
-                            1 => 'Large', 
-                            2 => 'Small',
-                            3 => 'Big'
-                        ), 
+                        'id_purchase_order', 
+                        $pembayaran, 
                         NULL, 
                         array(
                             'class' => 'form-control select2'
@@ -34,7 +38,6 @@
 
             <div class="form-group">
                 <label>Tanggal Pembayaran:</label>
-
                 <div class="input-group date">
                     <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>

@@ -16,6 +16,24 @@
           </div>
 
           <div class="form-group">
+            <label for="NoInvoice">No Invoice</label>
+            <input value=" {{ $PurchaseOrder->no_invoice }}" name="no_invoice" type="text" class="form-control" id="NoInvoice" placeholder="No Invoice" required>
+          </div>
+
+          <div class="form-group">
+            <label>Tanggal Invoice:</label>
+            <div class="input-group date">
+                <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+                </div>
+                <input name="tgl_invoice" value="{{ $PurchaseOrder->tgl_invoice }}" type="text" class="form-control pull-right" id="datepicker">
+            </div>
+            <!-- /.input group -->
+        </div>
+
+          
+
+          <div class="form-group">
             <label for="nama_project">Nama Project</label>
             <input value=" {{ $PurchaseOrder->nama_project }}" name="nama_project" type="text" class="form-control" id="nama_project" placeholder="Nama Project" required>
           </div>

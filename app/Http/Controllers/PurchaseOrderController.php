@@ -49,6 +49,8 @@ class PurchaseOrderController extends Controller
 	{
 		$PurchaseOrder = PurchaseOrder::find($id);
 		$PurchaseOrder->no_purchase_order = $request->no_purchase_order;
+		$PurchaseOrder->no_invoice = $request->no_invoice;
+		$PurchaseOrder->tgl_invoice = date('Y-m-d', strtotime($request->tgl_invoice));
 		$PurchaseOrder->nama_project = $request->nama_project;
 		$PurchaseOrder->customer = $request->customer;
 		$PurchaseOrder->nominal_purchase_order = $request->nominal_purchase_order;
