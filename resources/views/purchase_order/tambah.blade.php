@@ -18,6 +18,11 @@
                 <label for="nama_project">Nama Project</label>
                 <input name="nama_project" type="text" class="form-control" id="nama_project" placeholder="Nama Project" required>
             </div>
+    
+            <div class="form-group">
+                <label for="no_invoice">No Invoice</label>
+                <input name="no_invoice" type="text" class="form-control" id="no_invoice" placeholder="No Invoice" required>
+            </div>    
 
             <div class="form-group">
                 <label for="customer">Customer</label>

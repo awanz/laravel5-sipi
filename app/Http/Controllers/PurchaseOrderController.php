@@ -24,6 +24,8 @@ class PurchaseOrderController extends Controller
         PurchaseOrder::create([
     		'no_purchase_order' => $request->no_purchase_order,
 			'nama_project' => $request->nama_project,
+			'no_invoice' => "-",
+			'tgl_invoice' => date('Y-m-d', strtotime("0000-00-00")),
 			'customer' => $request->customer,
     		'nominal_purchase_order' => $request->nominal_purchase_order,
     		'status_delivery' => $request->status_delivery

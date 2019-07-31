@@ -16,7 +16,7 @@ class LaporanController extends Controller
 {
     public function index()
 	{
-		$laporan = Laporan::all();
+		$laporan = PurchaseOrder::all();
 		return view('laporan/index',['laporan'=>$laporan]);
 	}
  
