@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /node_modules
 /public/hot
 /public/storage
@@ -8,3 +9,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+=======
+
+>>>>>>> c41cfff098fb4559429a2de363ce97124c0ef1ab
