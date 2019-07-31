@@ -12,15 +12,15 @@
             {{ method_field('PUT') }}
             <div class="form-group">
                 <label>No Invoice</label>
-                <select name="purchase_order_id" class="form-control select2" style="width: 100%;">
-                    <option value="1">Alabama</option>
-                    <option value="2">Alaska</option>
-                    <option value="3">California</option>
-                    <option value="4">Delaware</option>
-                    <option value="5">Tennessee</option>
-                    <option value="6">Texas</option>
-                    <option value="7">Washington</option>
-                </select>
+                {{ 
+                    Form::select(
+                        'id_purchase_order', 
+                        $pembayaran, 
+                        $pembayaran->id_purchase_order, 
+                        array(
+                            'class' => 'form-control select2'
+                        )) 
+                }}
             </div>
 
             <div class="form-group">
