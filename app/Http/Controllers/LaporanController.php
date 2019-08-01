@@ -26,7 +26,7 @@ class LaporanController extends Controller
  
 	public function export()
 	{
-		if(Session::get('user_level') == 3 || Session::get('user_level') == 4){
+		if(Session::get('user_level') == 3 || Session::get('user_level') == 4  || Session::get('user_level') == 1){
 			return Excel::download(new LaporanExport, 'laporan.xlsx');
 		}else{
 			return redirect('/dashboard');

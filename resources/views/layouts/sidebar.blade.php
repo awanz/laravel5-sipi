@@ -40,7 +40,9 @@
         </a>
         <ul class="treeview-menu">
         <li><a href="{{ url('/pembayaran') }}">List Pembayaran</a></li>
+        @if (Session::get('user_level') == 2)
         <li><a href="{{ url('/pembayaran/tambah') }}">Tambah Pembayaran</a></li>
+        @endif
         </ul>
     </li>
     @endif
