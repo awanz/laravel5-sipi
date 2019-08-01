@@ -14,6 +14,7 @@
         <th>Customer</th>
         <th>Nominal Purchase Order</th>
         <th>Status Order</th>
+        <th>Progress</th>
         <th>Opsi</th>
       </tr>
       </thead>
@@ -33,6 +34,7 @@
               Selesai
             @endif
         </td>
+        <td>{{ $po->progress }}</td>
         <td>
           <a href="/purchase_order/edit/{{ $po->id_purchase_order }}">Edit</a>
           - 
@@ -50,6 +52,7 @@
         <th>Customer</th>
         <th>Nominal Purchase Order</th>
         <th>Status Order</th>
+        <th>Progress</th>
         <th>Opsi</th>
       </tr>
       </tfoot>
