@@ -24,7 +24,7 @@ class LaporanExport implements FromCollection, WithHeadings
     // ->get();
 
         // $laporan = PurchaseOrder::selectRaw('no_invoice, tgl_invoice');
-        $laporan = DB::table('purchase_order')->select('id_purchase_order','nama_project as Project', 'no_purchase_order as No PO', 'no_invoice as No Invoice','nominal_purchase_order', 'tgl_invoice as Tgl Invoice', 'progress as Status')->get();
+        $laporan = DB::table('purchase_order')->select('id_purchase_order','nama_project as Project', 'customer as Customer', 'no_purchase_order as No PO', 'no_invoice as No Invoice','nominal_purchase_order', 'tgl_invoice as Tgl Invoice', 'progress as Status')->get();
         return $laporan;
     }
 
