@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2019 at 02:39 PM
+-- Generation Time: Aug 01, 2019 at 02:43 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -21,28 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `sipi`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `laporan`
---
-
-CREATE TABLE `laporan` (
-  `laporan_id` int(11) NOT NULL,
-  `pembayaran_id` int(11) NOT NULL,
-  `nama_laporan` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `laporan`
---
-
-INSERT INTO `laporan` (`laporan_id`, `pembayaran_id`, `nama_laporan`) VALUES
-(1, 0, 'terrr'),
-(2, 0, 'aku'),
-(3, 0, 'minggu'),
-(4, 0, 'ahad');
 
 -- --------------------------------------------------------
 
@@ -82,11 +60,10 @@ CREATE TABLE `pembayaran` (
 --
 
 INSERT INTO `pembayaran` (`pembayaran_id`, `id_purchase_order`, `jumlah_pembayaran`, `tgl_pembayaran`) VALUES
-(2, 6, '234234', '2019-07-02'),
-(7, 6, '1500', '1924-03-14'),
-(8, 0, '4544', '0000-00-00'),
-(9, 0, '1313', '0000-00-00'),
-(10, 7, '45545', '2019-07-24');
+(2, 7, '500000', '2019-07-02'),
+(7, 6, '500000', '1924-03-14'),
+(9, 7, '1000000', '1970-01-01'),
+(10, 7, '250000', '2019-07-24');
 
 -- --------------------------------------------------------
 
@@ -102,16 +79,17 @@ CREATE TABLE `purchase_order` (
   `nama_project` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `customer` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nominal_purchase_order` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status_delivery` int(11) NOT NULL
+  `status_delivery` int(11) NOT NULL,
+  `progress` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `purchase_order`
 --
 
-INSERT INTO `purchase_order` (`id_purchase_order`, `no_purchase_order`, `no_invoice`, `tgl_invoice`, `nama_project`, `customer`, `nominal_purchase_order`, `status_delivery`) VALUES
-(6, '123/ABC.00.00/2021', '23', '2019-11-27', 'ASDe', 'PT. ABCe', '2126817001', 1),
-(7, 'dhsjfhsd', 'jsdhfsdj', '2019-07-02', 'sdfjh', 'jshkjdhas', '2940239', 2);
+INSERT INTO `purchase_order` (`id_purchase_order`, `no_purchase_order`, `no_invoice`, `tgl_invoice`, `nama_project`, `customer`, `nominal_purchase_order`, `status_delivery`, `progress`) VALUES
+(6, '123/ABC.00.00/2021', '23', '2019-11-27', 'ASDe', 'PT. ABCe', '3000000', 1, 'er3'),
+(7, 'dhsjfhsd', 'jsdhfsdj', '2019-07-02', 'sdfjh', 'jshkjdhas', '2000000', 2, 'no');
 
 -- --------------------------------------------------------
 
@@ -153,12 +131,6 @@ INSERT INTO `users` (`user_id`, `nik`, `username`, `password`, `email`, `user_le
 --
 
 --
--- Indexes for table `laporan`
---
-ALTER TABLE `laporan`
-  ADD PRIMARY KEY (`laporan_id`);
-
---
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -188,12 +160,6 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `laporan`
---
-ALTER TABLE `laporan`
-  MODIFY `laporan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -209,7 +175,7 @@ ALTER TABLE `pembayaran`
 -- AUTO_INCREMENT for table `purchase_order`
 --
 ALTER TABLE `purchase_order`
-  MODIFY `id_purchase_order` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_purchase_order` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
