@@ -27,8 +27,13 @@
                 <i class="fa fa-calendar"></i>
                 </div>
                 @php
-                    $myDateTime = DateTime::createFromFormat('Y-m-d', $PurchaseOrder->tgl_invoice);
-                    $newDate = $myDateTime->format('d-m-Y');
+                    if(!empty($PurchaseOrder->tgl_invoice)){
+                      $myDateTime = DateTime::createFromFormat('Y-m-d', $PurchaseOrder->tgl_invoice);
+                      $newDate = $myDateTime->format('d-m-Y');
+                    }else{
+                      $newDate = NULL;
+                    }
+                    
                 @endphp
                 <input name="tgl_invoice" value="{{ $newDate }}" type="text" class="form-control pull-right" id="datepicker">
             </div>
