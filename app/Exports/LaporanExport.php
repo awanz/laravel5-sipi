@@ -23,7 +23,7 @@ class LaporanExport implements FromCollection
     // ->get();
 
         // $laporan = PurchaseOrder::selectRaw('no_invoice, tgl_invoice');
-        $laporan = DB::table('purchase_order')->select('ROW_NUMBER() OVER ()','no_invoice as No Invoice', 'no_purchase_order as No. PO')->get();
+        $laporan = DB::table('purchase_order')->select('nama_project as Project', 'no_purchase_order as No PO', 'no_invoice as No Invoice', 'tgl_invoice as Tgl Invoice', 'progress as Status')->get();
         return $laporan;
     }
 }
