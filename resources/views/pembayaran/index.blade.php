@@ -19,9 +19,7 @@
       @foreach($pembayaran as $p)
       <tr>
         <td>
-          @foreach ($p->purchaseOrder2 as $po)
-              {{$po}}
-          @endforeach
+          {{ $p->no_invoice }}
         </td>
         <td>{{ $p->jumlah_pembayaran }}</td>
         <td>{{ $p->tgl_pembayaran }}</td>
