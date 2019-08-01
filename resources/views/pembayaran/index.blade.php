@@ -10,20 +10,28 @@
         <th>No Invoice</th>
         <th>Jumlah Pembayaran</th>
         <th>Tanggal Pembayaran</th>
+        @if (Session::get('user_level') == 2)
         <th>Opsi</th>
+        @endif
       </tr>
       </thead>
       <tbody>
       @foreach($pembayaran as $p)
       <tr>
-        <td>{{ $p->id_purchase_order }}</td>
+        <td>
+          @foreach ($p->purchaseOrder2 as $po)
+              {{$po}}
+          @endforeach
+        </td>
         <td>{{ $p->jumlah_pembayaran }}</td>
         <td>{{ $p->tgl_pembayaran }}</td>
+        @if (Session::get('user_level') == 2)
         <td>
           <a href="/pembayaran/edit/{{ $p->pembayaran_id }}">Edit</a>
           - 
           <a href="/pembayaran/hapus/{{ $p->pembayaran_id }}">Hapus</a>
         </td>
+        @endif
       </tr>
       @endforeach
       </tbody>
@@ -32,7 +40,9 @@
         <th>No Invoice</th>
         <th>Jumlah Pembayaran</th>
         <th>Tanggal Pembayaran</th>
+        @if (Session::get('user_level') == 2)
         <th>Opsi</th>
+        @endif
       </tr>
       </tfoot>
     </table>
