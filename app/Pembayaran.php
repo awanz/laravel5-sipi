@@ -12,6 +12,6 @@ class Pembayaran extends Model
     public $timestamps = false;
 
     public function purchaseOrder(){
-    	return $this->belongsTo('App\PurchaseOrder');
+    	return $this->belongsTo('App\PurchaseOrder', 'id_purchase_order');
     }
 }

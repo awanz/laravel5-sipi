@@ -27,18 +27,16 @@ class AuthController extends Controller
         $pass = $request->input('password');        
         $users = array();
         $users = DB::table('users')->where(['username'=> $user])->where(['password'=> $pass])->first();
-                if(count( (array) $users )==0){
+        if(count( (array) $users )==0){
 
-                    return redirect('/')->with('logingagal','Login gagal');
-                } else {  
-                    Session::put('username',$users->username);
-                    Session::put('user_level',$users->user_level);
-                    Session::put('nik',$users->nik);
-                    Session::put('login',TRUE);
-
-
-                    return redirect('/dashboard')->with('loginsukses','Login berhasil');
-                }
+            return redirect('/')->with('logingagal','Login gagal');
+        } else {  
+            Session::put('username',$users->username);
+            Session::put('user_level',$users->user_level);
+            Session::put('nik',$users->nik);
+            Session::put('login',TRUE);
+            return redirect('/dashboard')->with('loginsukses','Login berhasil');
+        }
     }
 
     public function logout()
@@ -46,6 +44,4 @@ class AuthController extends Controller
     	Session::flush();
         return redirect('/')->with('logout','Logout berhasil');
     }
-
-    
 }

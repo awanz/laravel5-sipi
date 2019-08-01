@@ -53,6 +53,12 @@
             <option value="1" selected>Belum Selesai</option>
             <option value="2">Selesai</option>
           </select>
+
+          <div class="form-group">
+            <label for="progress">Progress</label>
+            <input value=" {{ $PurchaseOrder->progress }}" name="progress" type="text" class="form-control" id="progress" placeholder="Progress" required>
+          </div>
+
           <div class="box-footer">
               <input type="submit" class="btn btn-primary" value="Update">
           </div>

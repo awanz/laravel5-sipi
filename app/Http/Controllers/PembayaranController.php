@@ -8,25 +8,43 @@ use App\Pembayaran;
 // call model Purchase Order
 use App\PurchaseOrder;
 
+use Illuminate\Support\Facades\Session;
+
 class PembayaranController extends Controller
 {
     public function index()
     {
-        $Pembayaran = Pembayaran::all();
-    	return view('pembayaran/index', ['pembayaran' => $Pembayaran]);
+		if(Session::get('user_level') == 2){
+			$Pembayaran = Pembayaran::all();
+    		return view('pembayaran/index', ['pembayaran' => $Pembayaran]);
+		}else{
+			return redirect('/dashboard');
+		}
+        
     }
 
     public function hapus($pembayaran_id)
 	{
-	    $pembayaran = Pembayaran::find($pembayaran_id);
-	    $pembayaran->delete();
-	    return redirect('/pembayaran');
+		if(Session::get('user_level') == 2){
+			$pembayaran = Pembayaran::find($pembayaran_id);
+			$pembayaran->delete();
+			return redirect('/pembayaran');
+		}else{
+			return redirect('/dashboard');
+		}
+
+	    
     }
     
     public function tambah()
     {
-		$PurchaseOrder = PurchaseOrder::all();
-    	return view('pembayaran/tambah', ['PurchaseOrder' => $PurchaseOrder]);
+		if(Session::get('user_level') == 2){
+			$PurchaseOrder = PurchaseOrder::all();
+    		return view('pembayaran/tambah', ['PurchaseOrder' => $PurchaseOrder]);
+		}else{
+			return redirect('/dashboard');
+		}
+		
     }
 
     public function tambah_proses(Request $request)
@@ -44,9 +62,14 @@ class PembayaranController extends Controller
 
     public function edit($id)
 	{
-	   $pembayaran 		= Pembayaran::find($id);
-	   $PurchaseOrder 	= PurchaseOrder::all();
-	   return view('/pembayaran/edit', ['pembayaran' => $pembayaran, 'PurchaseOrder' => $PurchaseOrder]);
+		if(Session::get('user_level') == 2){
+			$pembayaran 		= Pembayaran::find($id);
+			$PurchaseOrder 	= PurchaseOrder::all();
+			return view('/pembayaran/edit', ['pembayaran' => $pembayaran, 'PurchaseOrder' => $PurchaseOrder]);
+		}else{
+			return redirect('/dashboard');
+		}
+	   
 	}
 
 	public function edit_proses($id, Request $request)

@@ -1,4 +1,5 @@
 <title>Sistem Informasi Pencatatan Invoice</title>
+
 <!-- Logo -->
 <a href="{{ url('/dashboard') }}" class="logo">
 <!-- mini logo for sidebar mini 50x50 pixels -->

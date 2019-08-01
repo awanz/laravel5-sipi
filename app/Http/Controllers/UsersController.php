@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 // call model users
 use App\Users;
+use Illuminate\Support\Facades\Session;
 
 class UsersController extends Controller
 {
