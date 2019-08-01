@@ -16,7 +16,7 @@ class LaporanController extends Controller
 {
     public function index()
 	{
-		if(Session::get('user_level') == 3 || Session::get('user_level') == 4){
+		if(Session::get('user_level') == 3 || Session::get('user_level') == 4  || Session::get('user_level') == 1){
 			$laporan = PurchaseOrder::all();
 			return view('laporan/index',['laporan'=>$laporan]);
 		}else{

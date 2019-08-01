@@ -4,7 +4,7 @@
     <ul class="sidebar-menu" data-widget="tree">
     <li class="header">Menu</li>
     <!-- Optionally, you can add icons to the links -->
-    @if (Session::get('user_level') == 3 || Session::get('user_level') == 4)
+    @if (Session::get('user_level') == 3 || Session::get('user_level') == 4  || Session::get('user_level') == 1)
     <li><a href="{{ url('/laporan') }}"><i class="fa fa-link"></i> <span>Laporan</span></a></li>
     @endif
     @if (Session::get('user_level') == 1)
@@ -31,7 +31,7 @@
         <li><a href="{{ url('/invoice/tambah') }}">Tambah Invoice</a></li>
         </ul>
     </li> --}}
-    @if (Session::get('user_level') == 2)
+    @if (Session::get('user_level') == 2  || Session::get('user_level') == 1)
     <li class="treeview">
         <a href="#"><i class="fa fa-link"></i> <span>Pembayaran</span>
         <span class="pull-right-container">

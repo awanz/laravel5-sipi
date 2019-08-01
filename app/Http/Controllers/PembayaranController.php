@@ -14,7 +14,7 @@ class PembayaranController extends Controller
 {
     public function index()
     {
-		if(Session::get('user_level') == 2){
+		if(Session::get('user_level') == 2  || Session::get('user_level') == 1){
 			$Pembayaran = Pembayaran::all();
     		return view('pembayaran/index', ['pembayaran' => $Pembayaran]);
 		}else{
@@ -25,7 +25,7 @@ class PembayaranController extends Controller
 
     public function hapus($pembayaran_id)
 	{
-		if(Session::get('user_level') == 2){
+		if(Session::get('user_level') == 2  || Session::get('user_level') == 1){
 			$pembayaran = Pembayaran::find($pembayaran_id);
 			$pembayaran->delete();
 			return redirect('/pembayaran');
@@ -38,7 +38,7 @@ class PembayaranController extends Controller
     
     public function tambah()
     {
-		if(Session::get('user_level') == 2){
+		if(Session::get('user_level') == 2  || Session::get('user_level') == 1){
 			$PurchaseOrder = PurchaseOrder::all();
     		return view('pembayaran/tambah', ['PurchaseOrder' => $PurchaseOrder]);
 		}else{
@@ -62,7 +62,7 @@ class PembayaranController extends Controller
 
     public function edit($id)
 	{
-		if(Session::get('user_level') == 2){
+		if(Session::get('user_level') == 2 || Session::get('user_level') == 1){
 			$pembayaran 		= Pembayaran::find($id);
 			$PurchaseOrder 	= PurchaseOrder::all();
 			return view('/pembayaran/edit', ['pembayaran' => $pembayaran, 'PurchaseOrder' => $PurchaseOrder]);
