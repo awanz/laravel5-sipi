@@ -26,7 +26,11 @@
                 <div class="input-group-addon">
                 <i class="fa fa-calendar"></i>
                 </div>
-                <input name="tgl_invoice" value="{{ $PurchaseOrder->tgl_invoice }}" type="text" class="form-control pull-right" id="datepicker">
+                @php
+                    $myDateTime = DateTime::createFromFormat('Y-m-d', $PurchaseOrder->tgl_invoice);
+                    $newDate = $myDateTime->format('d-m-Y');
+                @endphp
+                <input name="tgl_invoice" value="{{ $newDate }}" type="text" class="form-control pull-right" id="datepicker">
             </div>
             <!-- /.input group -->
         </div>
