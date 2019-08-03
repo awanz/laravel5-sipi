@@ -63,7 +63,7 @@ class LaporanExport implements FromCollection, WithHeadings, WithMapping
             $po->no_invoice,
             $po->sisa_pembayaran,
             $po->tgl_invoice,
-            $po->status_delivery,
+            $po->progress,
         ];
     }
 
