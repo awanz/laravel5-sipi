@@ -14,7 +14,8 @@ class Pembayaran extends Model
     public function purchaseOrder(){
     	return $this->belongsTo('App\PurchaseOrder', 'id_purchase_order');
     }
+
     public function purchaseOrder2(){
-    	return $this->hasMany('App\PurchaseOrder','id_purchase_order');
+    	return $this->hasOne('App\PurchaseOrder', 'id_purchase_order');
     }
 }
