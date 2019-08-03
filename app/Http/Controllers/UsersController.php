@@ -13,18 +13,21 @@ class UsersController extends Controller
 {
     public function index()
     {
-    	// $users = DB::table('users')->get();
-    	// return view('users/index',['users' => $users]);
-
-    	// menggunakan eloquent
-    	
-    	$users = Users::all();
-    	return view('users/index', ['users' => $users]);
+    	if(Session::get('user_level') == 1){
+			$users = Users::all();
+    		return view('users/index', ['users' => $users]);
+		}else{
+			return redirect('/dashboard');
+		}
     }
 
     public function tambah()
     {
-		return view('users/tambah');
+		if(Session::get('user_level') == 1){
+			return view('users/tambah');
+		}else{
+			return redirect('/dashboard');
+		}
     }
 
     public function tambah_proses(Request $request)
@@ -41,14 +44,22 @@ class UsersController extends Controller
     
     public function hapus($id)
     {
-		DB::table('users')->where('nik',$id)->delete();
-		return redirect('/users');
+		if(Session::get('user_level') == 1){
+			DB::table('users')->where('nik',$id)->delete();
+			return redirect('/users');
+		}else{
+			return redirect('/dashboard');
+		}
     }
     
 	public function edit($id)
 	{
-		$users = DB::table('users')->where('nik',$id)->get();
-		return view('users/edit',['users' => $users]);
+		if(Session::get('user_level') == 1){
+			$users = DB::table('users')->where('nik',$id)->get();
+			return view('users/edit',['users' => $users]);
+		}else{
+			return redirect('/dashboard');
+		}
 	}
 
 	public function edit_proses(Request $request)
@@ -63,8 +74,4 @@ class UsersController extends Controller
 		// alihkan halaman ke halaman pegawai
 		return redirect('/users');
 	}
-
-
-
-
 }

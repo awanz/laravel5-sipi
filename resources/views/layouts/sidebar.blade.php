@@ -46,6 +46,7 @@
         </ul>
     </li>
     @endif
+    @if (Session::get('user_level') == 1)
     <li class="treeview">
         <a href="#"><i class="fa fa-link"></i> <span>Users</span>
         <span class="pull-right-container">
@@ -57,6 +58,7 @@
         <li><a href="{{ url('/users/tambah') }}">Tambah Users</a></li>
         </ul>
     </li>
+    @endif
     </ul>
     <!-- /.sidebar-menu -->
 </section>
