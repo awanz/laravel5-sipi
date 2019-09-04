@@ -11,6 +11,7 @@ use App\PurchaseOrder;
 use App\Exports\LaporanExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
+use PDF;
 
 class LaporanController extends Controller
 {
@@ -32,4 +33,16 @@ class LaporanController extends Controller
 			return redirect('/dashboard');
 		}
 	}
+
+	public function cetak_pdf()
+    {
+		if(Session::get('user_level') == 3 || Session::get('user_level') == 4  || Session::get('user_level') == 1){
+			$laporan = PurchaseOrder::all();
+ 
+			$pdf = PDF::loadview('laporan/laporan_pdf',['laporan'=>$laporan]);
+			return $pdf->download('laporan-pdf');
+		}else{
+			return redirect('/dashboard');
+		}
+    }
 }

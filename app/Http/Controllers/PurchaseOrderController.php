@@ -34,15 +34,26 @@ class PurchaseOrderController extends Controller
 
     public function tambah_proses(Request $request)
     {
-        PurchaseOrder::create([
-    		'no_purchase_order' => $request->no_purchase_order,
-			'nama_project' => $request->nama_project,
-			'customer' => $request->customer,
-    		'nominal_purchase_order' => $request->nominal_purchase_order,
-    		'status_delivery' => $request->status_delivery
-    	]);
- 
-    	return redirect('/purchase_order');
+		$ts = DB::table('purchase_order')
+		->where('no_purchase_order','=', $request->no_purchase_order)
+		->get();
+		
+		foreach ($ts as $t) {
+			$x = $t->no_purchase_order;
+		}
+
+		if(empty($x)){
+			PurchaseOrder::create([
+				'no_purchase_order' => $request->no_purchase_order,
+				'nama_project' => $request->nama_project,
+				'customer' => $request->customer,
+				'nominal_purchase_order' => $request->nominal_purchase_order,
+				'status_delivery' => $request->status_delivery
+			]);
+			return redirect('/purchase_order');
+		}else{
+			return redirect('/purchase_order/tambah')->with('tambahgagal','Data sudah ada');
+		}
     }
 
 	public function hapus($id_purchase_order)

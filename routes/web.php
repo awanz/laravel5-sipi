@@ -42,6 +42,8 @@ Route::put('/pembayaran/edit_proses/{id}', 'PembayaranController@edit_proses');
 Route::get('/laporan', 'LaporanController@index');
 Route::get('/laporan/export', 'LaporanController@export');
 
+Route::get('/laporan/export_pdf', 'LaporanController@cetak_pdf');
+
 // AUTH
 Route::get('/authi/login', 'AuthController@index');
 Route::get('/authi/logout', 'AuthController@logout');

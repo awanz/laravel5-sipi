@@ -7,6 +7,12 @@
     </div>
     <!-- /.box-header -->
     <div class="box-body">
+        @if(\Session::has('tambahgagal'))
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <p><i class="icon fa fa-ban"></i> Tambah data gagal!</p>
+        </div>
+        @endif
         <form action="/purchase_order/tambah_proses" method="post">
             {{ csrf_field() }}
             <div class="form-group">

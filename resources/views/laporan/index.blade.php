@@ -7,7 +7,7 @@
   <div class="box-body">
   	<br>
 	<center>
-  		<a href="/laporan/export" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
+  		<a href="/laporan/export_pdf" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
 	</center>
 	<br>
     <table id="example1" class="table table-bordered table-striped">
