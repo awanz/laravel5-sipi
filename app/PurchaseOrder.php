@@ -18,4 +18,5 @@ class PurchaseOrder extends Model
         return $this->belongsTo('App\Pembayaran', 'id_purchase_order');
     }
     
+    
 }

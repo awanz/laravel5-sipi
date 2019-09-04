@@ -50,7 +50,7 @@ class PurchaseOrderController extends Controller
 				'nominal_purchase_order' => $request->nominal_purchase_order,
 				'status_delivery' => $request->status_delivery
 			]);
-			return redirect('/purchase_order');
+			return redirect('/purchase_order')->with('tambahberhasil','Data berhasil ditambahkan.');
 		}else{
 			return redirect('/purchase_order/tambah')->with('tambahgagal','Data sudah ada');
 		}

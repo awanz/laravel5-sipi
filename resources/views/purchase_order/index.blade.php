@@ -2,6 +2,12 @@
 
 @section('content')
 <div class="box">
+  @if(\Session::has('tambahberhasil'))
+  <div class="alert alert-success alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <p><i class="icon fa fa-ok"></i> Data berhasil ditambahkan!</p>
+  </div>
+  @endif
   <!-- /.box-header -->
   <div class="box-body">
     <table id="example1" class="table table-bordered table-striped">
